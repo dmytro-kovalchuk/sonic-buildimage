@@ -331,3 +331,6 @@ SONIC_PTF_ENV_PY_VER = py3
 
 # Add timeout on some process which may hangs
 BUILD_PROCESS_TIMEOUT ?= 0
+
+# L2 Multicast
+INCLUDE_L2MC ?= y

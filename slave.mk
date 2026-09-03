@@ -207,6 +207,10 @@ ifeq ($(SONIC_INCLUDE_P4RT),y)
 INCLUDE_P4RT = y
 endif
 
+ifeq ($(SONIC_INCLUDE_L2MC),y)
+INCLUDE_L2MC = y
+endif
+
 # Pre-built Bazel is not available for armhf, so exclude P4RT
 # TODO(PINS): Remove when Bazel binaries are available for armhf
 ifeq ($(CONFIGURED_ARCH),armhf)
@@ -464,6 +468,7 @@ $(info "INCLUDE_ROUTER_ADVERTISER"       : "$(INCLUDE_ROUTER_ADVERTISER)")
 $(info "INCLUDE_BOOTCHART                : "$(INCLUDE_BOOTCHART)")
 $(info "ENABLE_BOOTCHART                 : "$(ENABLE_BOOTCHART)")
 $(info "INCLUDE_FIPS"                    : "$(INCLUDE_FIPS)")
+$(info "INCLUDE_L2MC"                    : "$(INCLUDE_L2MC)")
 $(info "ENABLE_TRANSLIB_WRITE"           : "$(ENABLE_TRANSLIB_WRITE)")
 $(info "ENABLE_NATIVE_WRITE"             : "$(ENABLE_NATIVE_WRITE)")
 $(info "ENABLE_DIALOUT"                  : "$(ENABLE_DIALOUT)")
@@ -1467,6 +1472,7 @@ $(addprefix $(TARGET_PATH)/, $(SONIC_INSTALLERS)) : $(TARGET_PATH)/% : \
 	export include_iccpd="$(INCLUDE_ICCPD)"
 	export include_dash_ha="$(INCLUDE_DASH_HA)"
 	export include_stpd="$(INCLUDE_STP)"
+	export include_l2mc="$(INCLUDE_L2MC)"
 	export pddf_support="$(PDDF_SUPPORT)"
 	export include_pde="$(INCLUDE_PDE)"
 	export shutdown_bgp_on_start="$(SHUTDOWN_BGP_ON_START)"

@@ -1,0 +1,4 @@
+FROM debian:bookworm-slim
+COPY debs/l2mcastd.deb /tmp/l2mcastd.deb
+RUN dpkg -i /tmp/l2mcastd.deb && rm /tmp/l2mcastd.deb
+ENTRYPOINT ["/usr/bin/l2mcastd"]
