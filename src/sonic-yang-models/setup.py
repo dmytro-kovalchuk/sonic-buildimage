@@ -145,6 +145,7 @@ yang_files = [
     'sonic-smart-switch.yang',
     'sonic-srv6.yang',
     'sonic-ztp.yang',
+    'sonic-l2mc.yang',
 ]
 
 class my_build_py(build_py):

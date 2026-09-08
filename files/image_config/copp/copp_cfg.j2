@@ -136,6 +136,19 @@
 		    "trap_ids": "neighbor_miss",
 		    "trap_group": "queue1_group3",
 		    "always_enabled": "true"
-	    }
+	    },
+		"sflow": {
+            "trap_group": "queue2_group1",
+            "trap_ids": "sample_packet"
+        },
+        "neighbor_miss": {
+            "trap_ids": "neighbor_miss",
+            "trap_group": "queue1_group3",
+            "always_enabled": "true"
+        },
+        "igmp": {
+            "trap_ids": "igmp_query,igmp_leave,igmp_v1_report,igmp_v2_report,igmp_v3_report",
+            "trap_group": "queue4_group3"
+        }
     }
 }

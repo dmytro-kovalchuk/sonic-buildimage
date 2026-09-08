@@ -1,0 +1,47 @@
+module sonic-l2mc {
+    namespace "http://github.com/sonic-net/sonic-l2mc";
+    prefix sl2mc;
+    yang-version 1.1;
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    import sonic-vlan {
+        prefix svlan;
+    }
+
+    organization "SONiC";
+    contact "SONiC";
+    description "SONiC YANG model for Static L2 Multicast (L2MC)";
+
+    revision 2026-09-08 {
+        description "Initial revision for Static L2MC based on SONiC guidelines.";
+    }
+
+    container sonic-l2mc {
+        container STATIC_L2MC {
+            description "STATIC_L2MC table in CONFIG_DB";
+            list STATIC_L2MC_LIST {
+                key "vlan-name group-ip";
+
+                leaf vlan-name {
+                    type leafref {
+                        path "/svlan:sonic-vlan/svlan:VLAN/svlan:VLAN_LIST/svlan:name";
+                    }
+                    description "Reference to the VLAN";
+                }
+
+                leaf group-ip {
+                    type inet:ipv4-address;
+                    description "Multicast group IPv4 address";
+                }
+
+                leaf members {
+                    type string;
+                    description "Comma-separated list of member ports";
+                }
+            }
+        }
+    }
+}

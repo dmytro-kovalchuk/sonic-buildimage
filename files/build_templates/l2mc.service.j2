@@ -1,14 +1,14 @@
 [Unit]
 Description=l2mc service container
-After=docker.service
-Requires=docker.service
+After=docker.service database.service
+Requires=docker.service database.service
 
 [Service]
 TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker stop l2mc
 ExecStartPre=-/usr/bin/docker rm l2mc
-ExecStart=/usr/bin/docker run --name l2mc --rm docker-l2mc:latest
+ExecStart=/usr/bin/docker run --name l2mc --rm --net=host -v /var/run/redis:/var/run/redis:rw docker-l2mc:latest
 ExecStop=/usr/bin/docker stop l2mc
 
 [Install]
