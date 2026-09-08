@@ -3013,6 +3013,11 @@
                 "product-name" : "product name",
                 "serial-no" : "1234-5678-91A"
             }
+        },
+        "STATIC_L2MC": {
+            "Vlan100|239.1.1.1": {
+                "members": "Ethernet0"
+            }
         }
     },
     "SAMPLE_CONFIG_DB_UNKNOWN": {

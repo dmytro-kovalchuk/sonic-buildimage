@@ -21,16 +21,13 @@ def main():
                     entry_key = f"{parts[1]}:{parts[2]}"
                     new_state[entry_key] = r_config.hgetall(k)
             
-            # Обробка нових та змінених записів (SET)
             for key, data in new_state.items():
                 if key not in current_state or current_state[key] != data:
                     fvs = swsscommon.FieldValuePairs(list(data.items()))
                     producer.set(key, fvs)
             
-            # Обробка видалених записів (DEL)
             for key in current_state:
                 if key not in new_state:
-                    # У SWIG-обгортці SONiC видалення викликається через _del
                     producer._del(key)
                     
             current_state = new_state
